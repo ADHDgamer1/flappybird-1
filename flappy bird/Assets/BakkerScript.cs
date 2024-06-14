@@ -8,6 +8,7 @@ public class BakkerScript : MonoBehaviour
     public GameObject Friekandelbroodje;
     public float SpawnRate = 2;
     private float timer = 0;
+    public float heightoffset = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,9 @@ public class BakkerScript : MonoBehaviour
     }
     void SpawnFriekandelbroodje()
     {
-        Instantiate(Friekandelbroodje, transform.position, transform.rotation);
+        float lowestpoint = transform.position.y - heightoffset;
+        float highestpoint = transform.position.y + heightoffset;
+
+        Instantiate(Friekandelbroodje, new Vector3(transform.position.x, Random.Range(lowestpoint, highestpoint), 0), transform.rotation);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FriekandelMoveScript : MonoBehaviour
 {
     public float MoveSpeed = 5;
+    public float deadzone = -45;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +17,11 @@ public class FriekandelMoveScript : MonoBehaviour
     void Update()
     {
         transform.position = transform.position + (Vector3.left  * MoveSpeed) * Time.deltaTime;
+
+        if (transform.position.x < deadzone)
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
